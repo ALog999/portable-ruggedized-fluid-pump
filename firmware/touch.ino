@@ -3,29 +3,29 @@
 #include <Arduino.h>
 #include <SPI.h>
 
-#define USE_UI          //if you want to use the ui export from Squareline ,pleease define USE_UI.
-#define Display_35        //according to the board you using ,if you using the ESP32 Display 3.5inch board, please define 'Display_35'.if using 2.4inch board,please define 'Display_24'.
+#define USE_UI          
+#define Display_35        
 
-#define SDA_PIN 22   // Define the SDA pin
-#define SCL_PIN 21   // Define the SCL pin
+#define SDA_PIN 22   
+#define SCL_PIN 21  
 
 #ifdef USE_UI
 #include <lvgl.h>
 #include "ui.h"
 #endif
 
-#if defined Display_35      //ESP32 Display 3.5inch Board
+#if defined Display_35   
 /*screen resolution*/
 static const uint16_t screenWidth  = 480;
 static const uint16_t screenHeight = 320;
-uint16_t calData[5] = { 353, 3568, 269, 3491, 7  };     /*touch caldata*/
+uint16_t calData[5] = { 353, 3568, 269, 3491, 7  };  
 
-#elif defined Display_24    //ESP32 Display 2.4inch Board
+#elif defined Display_24  
 static const uint16_t screenWidth  = 320;
 static const uint16_t screenHeight = 240;
 uint16_t calData[5] = { 557, 3263, 369, 3493, 3  };
 
-#elif defined Display_28    //ESP32 Display 2.8inch Board
+#elif defined Display_28  
 static const uint16_t screenWidth  = 320;
 static const uint16_t screenHeight = 240;
 uint16_t calData[5] = { 189, 3416, 359, 3439, 1 };
@@ -101,7 +101,6 @@ void setup()
   digitalWrite(27, HIGH);
 
 #if defined USE_UI
-  //lvgl init
   lv_init();
   
   lv_disp_draw_buf_init( &draw_buf, buf1, NULL, screenWidth * screenHeight / 13 );
@@ -123,9 +122,9 @@ void setup()
   indev_drv.read_cb = my_touchpad_read;
   lv_indev_drv_register( &indev_drv );
 
-  ui_init();        //LVGL UI init
+  ui_init();      
   
-#else               //if you haven't defined 'USE_UI', the program compiler will not compile the code above; it will just compile the code follows
+#else              
   //no else, don't need it
 #endif
   Serial.println( "Setup done" );
