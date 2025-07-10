@@ -34,10 +34,10 @@ A modular, microcontroller-based fluid pumping system designed for use in rugged
 ## 📂 Repository Structure
 
 ```plaintext
-├── firmware/           # Main source files (.ino, .cpp, .h)
+├── src/           # Main source files (.ino, .cpp, .h)
+│   └── touch.ino           # Touchscreen UI setup
+│   └── pump_i2c.ino        # I2C pump controller
+│   └── main.ino            # Core logic and CLI
 ├── docs/               # Technical report, poster, and images
 │   └── images/
-├── touch.ino           # Touchscreen UI setup
-├── pump_i2c.ino        # I2C pump controller
-├── main.ino            # Core logic and CLI
 └── README.md
