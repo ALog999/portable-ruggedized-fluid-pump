@@ -3,12 +3,12 @@
 
 #define SDA_PIN 21   
 #define SCL_PIN 22   
-#define PUMP_ADDRESS_1 109 // Pump 1 I2C Address
-#define PUMP_ADDRESS_2 110 // Pump 2 I2C Address
+#define PUMP_ADDRESS_1 109 
+#define PUMP_ADDRESS_2 110 
 
 String actualVolume; 
 
-//Function to send commands from esp32 to pump
+//Function to send commands from microcontroller to pump
 void sendCommandToPump(int pump, String command) {
   int pumpAddress = (pump == 2) ? PUMP_ADDRESS_2 : PUMP_ADDRESS_1; // Determine pump address based on the selected pump
   Wire.beginTransmission(pumpAddress); // Begin transmission to the specified pump
